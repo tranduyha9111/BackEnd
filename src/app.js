@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
 require("dotenv").config();
@@ -7,6 +8,12 @@ require("dotenv").config();
 const app = express(); // ✅ phải đặt lên trước
 
 // middleware
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // swagger
